@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 50%;
+    height: 200px;
+    border-radius: 2rem;
+    border: 1px solid black; /*debug*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#numeri-random {
+    font-size: 30px;
+}
