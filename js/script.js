@@ -6,7 +6,6 @@
 
 
 
-
 // array che conterrà i 5 numeri random
 const numArray = [];
 // array che conterrà i numeri inseriti dall'utente
@@ -14,14 +13,10 @@ const userNumArray = [];
 // array che conterrà i numeri indovinati dall'utente
 const guessedNum = [];
 
-
-
-
-
 // ciclo 5 numeri random
 while (numArray.length < 5) {
     const numRandom = Math.floor(Math.random() * 100) + 1;
-    
+
     if (!numArray.includes(numRandom)) {
         numArray.push(numRandom);
     }
@@ -39,38 +34,25 @@ let second = 3;
 const timer = document.getElementById('timer');
 
 // funzione countdown
-function myTimer () {
+function myTimer() {
     timer.innerHTML = second;
-        if(second == 0) {
-            clearInterval(clock);
-            alert('tempo scaduto!');
-            timer.innerHTML = '';
-            document.getElementById('numeri-random').innerHTML = '';
+    if (second == 0) {
+        clearInterval(clock);
+        alert('tempo scaduto!');
+        timer.innerHTML = '';
+        document.getElementById('numeri-random').innerHTML = '';
 
-            for(let i = 0; i < numArray.length; i++) {
-                const num = parseInt(prompt('inserisci i numeri uno alla volta'));
-                userNumArray.push(num);
+        for (let i = 0; i < numArray.length; i++) {
+            const num = parseInt(prompt('inserisci i numeri uno alla volta'));
+            userNumArray.push(num);
 
-                if( numArray[i] == userNumArray[i] ) {
-                    guessedNum.push(num);
-                }
+            if (numArray[i] == userNumArray[i]) {
+                guessedNum.push(num);
             }
-            console.log(guessedNum);
-            console.log(userNumArray);
-            alert(`Hai indovinato ${guessedNum.length} numeri. I numeri indovinati sono ${guessedNum}.`);
         }
-        second--;
+        console.log(guessedNum);
+        console.log(userNumArray);
+        alert(`Hai indovinato ${guessedNum.length} numeri. I numeri indovinati sono ${guessedNum}.`);
+    }
+    second--;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
