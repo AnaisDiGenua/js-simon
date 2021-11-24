@@ -8,9 +8,12 @@
 
 
 // array che conterrà i 5 numeri random
-let numArray = [];
+const numArray = [];
 // array che conterrà i numeri inseriti dall'utente
 const userNumArray = [];
+// array che conterrà i numeri indovinati dall'utente
+const guessedNum = [];
+
 
 
 
@@ -25,22 +28,18 @@ while (numArray.length < 5) {
 }
 
 console.log(numArray);
+
 // stampo i numeri nella pagina
 document.getElementById('numeri-random').innerHTML = numArray;
-
 
 // richiamo la funzione timer
 const clock = setInterval(myTimer, 1000);
 
-
-
-
-
-
 let second = 3;
+const timer = document.getElementById('timer');
+
 // funzione countdown
 function myTimer () {
-    const timer = document.getElementById('timer');
     timer.innerHTML = second;
         if(second == 0) {
             clearInterval(clock);
@@ -48,15 +47,28 @@ function myTimer () {
             timer.innerHTML = '';
             document.getElementById('numeri-random').innerHTML = '';
 
-            for(let i = 0; i <numArray.length; i++) {
+            for(let i = 0; i < numArray.length; i++) {
                 const num = parseInt(prompt('inserisci i numeri uno alla volta'));
-            
                 userNumArray.push(num);
+
+                if( numArray[i] == userNumArray[i] ) {
+                    guessedNum.push(num);
+                }
             }
+            console.log(guessedNum);
             console.log(userNumArray);
+            alert(`Hai indovinato ${guessedNum.length} numeri. I numeri indovinati sono ${guessedNum}.`);
         }
         second--;
 }
+
+
+
+
+
+
+
+
 
 
 
