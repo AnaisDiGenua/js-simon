@@ -9,6 +9,11 @@
 
 // array che conterrà i 5 numeri random
 let numArray = [];
+// array che conterrà i numeri inseriti dall'utente
+const userNumArray = [];
+
+
+
 
 // ciclo 5 numeri random
 while (numArray.length < 5) {
@@ -22,3 +27,38 @@ while (numArray.length < 5) {
 console.log(numArray);
 // stampo i numeri nella pagina
 document.getElementById('numeri-random').innerHTML = numArray;
+
+
+// richiamo la funzione timer
+const clock = setInterval(myTimer, 1000);
+
+
+
+
+
+
+let second = 3;
+// funzione countdown
+function myTimer () {
+    const timer = document.getElementById('timer');
+    timer.innerHTML = second;
+        if(second == 0) {
+            clearInterval(clock);
+            alert('tempo scaduto!');
+            timer.innerHTML = '';
+            document.getElementById('numeri-random').innerHTML = '';
+
+            for(let i = 0; i <numArray.length; i++) {
+                const num = parseInt(prompt('inserisci i numeri uno alla volta'));
+            
+                userNumArray.push(num);
+            }
+            console.log(userNumArray);
+        }
+        second--;
+}
+
+
+
+
+
