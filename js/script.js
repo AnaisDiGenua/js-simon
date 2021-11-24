@@ -46,7 +46,7 @@ function myTimer() {
             const num = parseInt(prompt('inserisci i numeri uno alla volta'));
             userNumArray.push(num);
 
-            if (numArray[i] == userNumArray[i]) {
+            if (numArray.includes(userNumArray[i])) {
                 guessedNum.push(num);
             }
         }
