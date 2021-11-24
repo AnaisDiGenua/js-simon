@@ -12,16 +12,14 @@ const numArray = [];
 const userNumArray = [];
 // array che conterrà i numeri indovinati dall'utente
 const guessedNum = [];
+// contatore timer
+let second = 3;
+// variabile timer
+const timer = document.getElementById('timer');
 
-// ciclo 5 numeri random
-while (numArray.length < 5) {
-    const numRandom = Math.floor(Math.random() * 100) + 1;
 
-    if (!numArray.includes(numRandom)) {
-        numArray.push(numRandom);
-    }
-}
-
+//richiamo la funzione per generare i numeri random
+numGenerator(numArray);
 console.log(numArray);
 
 // stampo i numeri nella pagina
@@ -30,8 +28,7 @@ document.getElementById('numeri-random').innerHTML = numArray;
 // richiamo la funzione timer
 const clock = setInterval(myTimer, 1000);
 
-let second = 3;
-const timer = document.getElementById('timer');
+
 
 // funzione countdown
 function myTimer() {
@@ -46,13 +43,39 @@ function myTimer() {
             const num = parseInt(prompt('inserisci i numeri uno alla volta'));
             userNumArray.push(num);
 
-            if (numArray.includes(userNumArray[i])) {
+            if (numArray.includes(userNumArray[i]) ) {
                 guessedNum.push(num);
             }
         }
         console.log(guessedNum);
         console.log(userNumArray);
-        alert(`Hai indovinato ${guessedNum.length} numeri. I numeri indovinati sono ${guessedNum}.`);
+
+        // richiamo la funzione
+        score();
     }
     second--;
+}
+
+
+// funzione per generare 5 numeri casuali
+function numGenerator (array) {
+    while (array.length < 5) {
+        const numRandom = Math.floor(Math.random() * 100) + 1;
+    
+        if (!array.includes(numRandom)) {
+            array.push(numRandom);
+        }
+    }
+}
+
+
+// funzione punteggio
+function score () {
+    if(guessedNum.length == numArray.length) {
+        alert('complimenti! hai vinto!');
+    } else if (guessedNum.length < 1) {
+        alert('non hai indovinato nessun numero. Ritenta')
+    } else {
+        alert(`Hai indovinato ${guessedNum.length} numeri. I numeri indovinati sono ${guessedNum}.`);
+    }
 }
